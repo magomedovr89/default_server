@@ -19,8 +19,8 @@ ufw enable
 ufw allow ssh
 echo "activate ufw and allow ssh port"
 
-usermod -aG sudo @1
-touch /etc/sudoers.d/@1
-cat /etc/sudoers.d/@1 <<EOF
-	@1ALL=(ALL) NOPASSWD:ALL
+usermod -aG sudo $1
+touch /etc/sudoers.d/$1
+cat /etc/sudoers.d/$1 <<EOF
+	$1ALL=(ALL) NOPASSWD:ALL
 EOF
