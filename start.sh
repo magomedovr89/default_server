@@ -1,32 +1,15 @@
 #!/bin/bash
 
-if [ "$#" -lt 1 ]; then
-    echo "Недостаточно аргументов. Пожалуйста, передайте в качестве аргумента имя пользователя. Это необходимо для того чтобы прописать его в sudo"
-    exit 1
-fi
+echo -n "Введите имя пользователя которому вы хотите прописать права суперпользователя: "
 
+read name
+echo "Процесс запущен"
 
-while [ -n "$1" ]
-  do
-    case "$1" in
-      -a) echo "Found the -a option";;
-      -b) param="$2"
-      echo "Found the -b option, with parameter value $param"
-      shift ;;
-      -c) echo "Found the -c option";;
-      --) shift
-      break ;;
-      *) echo "$1 is not an option";;
-    esac
-    shift
-    done
-count=1
-for param in "$@"
-  do
-    echo "Parameter #$count: $param"
-    count=$(( $count + 1 ))
-  done
+usermod -aG sudo $name
+touch /etc/sudoers.d/$name
 
+python3 create_files.py $name
+echo "Процесс завершен"
 
 
 #apt-get update
