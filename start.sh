@@ -15,12 +15,20 @@ apt-get install mc ufw sudo openssh-server ssh -y
 echo "install mc, sudo, openssh"
 
 
-ufw enable
-ufw allow ssh
-echo "activate ufw and allow ssh port"
 
-usermod -aG sudo $1
-touch /etc/sudoers.d/$1
-cat /etc/sudoers.d/$1 <<EOF
-	$1ALL=(ALL) NOPASSWD:ALL
-EOF
+
+echo "start install python"
+
+wget https://www.python.org/ftp/python/3.10.2/Python-3.10.2.tgz
+tar xzf Python-3.10.2.tgz
+cd Python-3.10.2
+./configure --enable-optimizations
+make altinstall
+
+
+#ufw enable
+#ufw allow ssh
+#echo "activate ufw and allow ssh port"
+#
+#usermod -aG sudo $1
+#touch /etc/sudoers.d/$1
