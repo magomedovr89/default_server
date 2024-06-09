@@ -17,18 +17,21 @@ echo "install mc, sudo, openssh"
 
 
 
-echo "start install python"
-
-wget https://www.python.org/ftp/python/3.10.2/Python-3.10.2.tgz
-tar xzf Python-3.10.2.tgz
-cd Python-3.10.2
-./configure --enable-optimizations
-make altinstall
-
-
-#ufw enable
-#ufw allow ssh
-#echo "activate ufw and allow ssh port"
+#echo "start install python"
 #
-#usermod -aG sudo $1
-#touch /etc/sudoers.d/$1
+#wget https://www.python.org/ftp/python/3.10.2/Python-3.10.2.tgz
+#tar xzf Python-3.10.2.tgz
+#cd Python-3.10.2
+#./configure --enable-optimizations
+
+
+ufw enable
+ufw allow ssh
+echo "activate ufw and allow ssh port"
+
+usermod -aG sudo $1
+touch /etc/sudoers.d/$1
+
+python3 create_files $1
+
+
