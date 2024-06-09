@@ -1,6 +1,8 @@
-import argparse
+print("start process with create sudo parameters for alternative user")
+
 
 import argparse
+
 
 params = argparse.ArgumentParser()
 params.add_argument("arg", nargs='*', default=['no args'])
