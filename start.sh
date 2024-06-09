@@ -31,4 +31,3 @@ read address
 echo "Процесс запущен"
 python3 network.py $address
 echo "Процесс завершен"
-
