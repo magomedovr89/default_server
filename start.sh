@@ -32,6 +32,8 @@ echo "activate ufw and allow ssh port"
 usermod -aG sudo $1
 touch /etc/sudoers.d/$1
 
-python3 create_files $1
+python3 create_files.py $1
+
+python3 create_files.py $1 /etc/sudoers.d/$1 /asdas sdfsdf 123123
 
 
